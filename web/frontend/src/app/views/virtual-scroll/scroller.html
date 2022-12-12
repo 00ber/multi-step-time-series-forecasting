@@ -1,0 +1,17 @@
+<div class="mobileDatePicker">
+  <div class="month">
+    {{currentMonth | uppercase }}
+    <span class="material-icons monthIcon">calendar_today</span>
+  </div>
+  <div class="cdk-virtual-scroll-data-source-example">
+    <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="60" minBufferPx="400" maxBufferPx="1000"  class="example-viewport" (scrolledIndexChange)="changeMonth($event)">
+      <div *cdkVirtualFor="let item of items" class="example-item">
+        <div class="item" (click)="select(item)" [ngClass]="{'is-active':item===selectedItem}">
+          <span class="weekName">{{returnWeekDay(item)}}</span>
+          <span class="weekName"> {{item | date:'d'}}</span>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+<div>
+

@@ -1,0 +1,47 @@
+<c-card class="mb-4">
+  <c-card-header>
+    <h2 class="card-title mb-0" id="forecasts">Hourly temperature forecasts for Washington D.C. for the last 30 days ({{ datesLabel }})</h2>
+  </c-card-header>
+  <c-card-body>
+    <c-row>
+    <c-col>
+        <horizontal-date-scroller [fromDate]="startDate" [toDate]="endDate" (dateChanged)="changeSelectedDate($event)">loading</horizontal-date-scroller>
+    </c-col>
+    </c-row>
+    <c-chart
+      [data]="mainChart.data"
+      [height]="300"
+      [ngStyle]="{ 'marginTop.px': 40 }"
+      [options]="mainChart.options"
+      [type]="mainChart.type"
+      [redraw]="true"
+    >
+    </c-chart>
+  </c-card-body>
+</c-card>
+
+<c-card>
+  <c-card-header>
+    <h2 class="card-title mb-0" id="table-title">Predicted vs Actual temperatures for {{ selectedDate }}</h2>
+  </c-card-header>
+  <c-card-body>
+        <table [striped]="true" cTable>
+          <thead>
+          <tr>
+            <th scope="col"><strong>Time</strong></th>
+            <th scope="col"><strong>Predicted (°F)</strong></th>
+            <th scope="col"><strong>Actual (°F)</strong></th>
+            <th scope="col"><strong>Error</strong></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let row of tableRows$ | async">
+          <td>{{ row.time }}</td>
+          <td>{{ row.predicted }}</td>
+          <td>{{ row.actual }}</td>
+          <td>{{ row.error }}</td>
+          </tr>
+          </tbody>
+        </table>
+  </c-card-body>
+</c-card>
