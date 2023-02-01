@@ -1,4 +1,7 @@
-# **Abstract**
+
+# Using deep learning to predict the temperature of the next 24 hours at the Ronald Reagan National Airport
+
+## **Abstract**
 
 Weather forecasts are an integral part of our day-to-day lives. They
 help us plan ahead and be prepared for the upcoming hours, days and even
@@ -19,14 +22,14 @@ This project is an attempt in using machine learning (deep learning in
 particular) to make hourly weather forecasts for each day at Washington
 D.C.
 
-# **Problem Definition and Algorithm**
+## **Problem Definition and Algorithm**
 
-## **Task Definition:** 
+### **Task Definition:** 
 
 Using historical hourly weather data of the previous 7 days, predict the
 temperature for the next 24 hours (12am to next day’s 12am).
 
-## **Source of Data**
+### **Source of Data**
 
 **URL:**
 [Wunderground](https://www.wunderground.com/history/daily/us/va/arlington/KDCA/date/2022-12-12)  
@@ -83,7 +86,7 @@ The format of the data is as follows:
 | secondary\_swell\_height    | Secondary swell height                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | null                                           |
 | secondary\_swell\_direction | Secondary swell direction                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | null                                           |
 
-## **Choice of algorithm**
+### **Choice of algorithm**
 
 Since this is a time-series forecasting problem, the Long Short Term
 Memory (LSTM) neural network was used to build the model. For the
@@ -106,7 +109,7 @@ timesteps better.
 ![image](./docs/lstm.png)  
 Fig: A simplistic LSTM representation of the modeling task
 
-# **Exploratory Data Analysis**
+## **Exploratory Data Analysis**
 
 22 years worth of historical hourly weather data from 2000-01-01 to
 2000-12-06 for the Ronald Reagan National Airport was used for training
@@ -159,7 +162,7 @@ the temperature, relative humidity (rh) is highly correlated to the the
 visibility (vis), and there is also a slight correlation between the
 pressure and the temperature.
 
-# **Data Preprocessing**
+## **Data Preprocessing**
 
 Since I want to convert the data into fixed width hourly records, the
 first step was to convert the UNIX timestamp to a human readable date.
@@ -307,7 +310,7 @@ following results were seen:
 Fig: Comparison of the LSTM model’s performance vs the two baseline
 models
 
-# **Making Predictions / User Interface**
+## **Making Predictions / User Interface**
 
 After building my model, I built a website that uses this model and
 allows a user to check the model’s forecasts for tomorrow’s temperature
@@ -318,19 +321,19 @@ of how accurate the model actually is.//
 The website is available at
 [**http//3.235.0.237/\#/dashboard**](http://3.235.0.237/#/dashboard).
 
-## **Technology Stack**
+### **Technology Stack**
 
 | **Backend**  | Flask, Tensorflow |
 | :----------- | :---------------- |
 | **Frontend** | Angular           |
 | **Infra**    | AWS EC2, Docker   |
 
-## **Architecture**
+### **Architecture**
 
 ![image](./docs/weather-requests.drawio.png)  
 Fig: Request/Response life cycle
 
-## **User Interface**
+### **User Interface**
 
 The user interface consists of a horizontal scrollable date picker that
 allows the user to select a date (from the current date to 30 days
@@ -353,7 +356,7 @@ Fig: Graph View
 ![image](./docs/table-view.png)  
 Fig: Table View
 
-# **Conclusion**
+## **Conclusion**
 
 The final model had a Mean Absolute Error score of about 3.5. i.e. our
 model’s predicted temperatures are about \(\pm3.5\) from the actual
@@ -369,7 +372,7 @@ I would have liked. So, I definitely want to try different LSTM
 architectures in the near future and see how they compare to my current
 model.
 
-# **References**
+## **References**
 
   - Educational Resources
     
