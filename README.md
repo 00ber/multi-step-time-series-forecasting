@@ -306,7 +306,7 @@ Fig: Samples of LSTM model’s performance on test dataset
 Comparing the average Mean Absolute Error for all three models, the
 following results were seen:  
 
-![image](./docs/comparision.png)  
+![image](./docs/comparison.png)  
 Fig: Comparison of the LSTM model’s performance vs the two baseline
 models
 
